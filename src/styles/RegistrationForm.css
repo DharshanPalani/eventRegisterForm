@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f0ebf8;
+  font-family: "Roboto", "Google Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+  min-height: 100vh;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 640px;
+  background: white;
+  border-radius: 8px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.form-container:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+  height: 10px;
+  background: #673ab7;
+  width: 100%;
+}
+
+.form-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 24px 24px 8px 24px;
+  color: #202124;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.form-subtitle {
+  margin: 0 24px 24px 24px;
+  font-size: 14px;
+  color: #5f6368;
+  font-weight: 400;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 24px;
+}
+
+.form-body {
+  padding: 8px 24px 24px 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.input-group label {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #5f6368;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.input-group label::after {
+  content: " *";
+  color: #d93025;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input-group input,
+.input-group select {
+  padding: 12px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: "Roboto", Arial, sans-serif;
+  color: #202124;
+  background: white;
+  transition: all 0.2s ease;
+  line-height: 1.5;
+}
+
+.input-group input:hover,
+.input-group select:hover {
+  border-color: #b0b0b0;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border: 2px solid #673ab7;
+  outline: none;
+  padding: 11px 13px;
+}
+
+.input-group input::placeholder {
+  color: #9aa0a6;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.input-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.input-group select:focus {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23673ab7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.input-group input[type="file"] {
+  padding: 8px 0;
+  border: none;
+  font-family: "Roboto", Arial, sans-serif;
+  color: #5f6368;
+  background: transparent;
+}
+
+.input-group input[type="file"]:hover {
+  border: none;
+}
+
+.input-group input[type="file"]::file-selector-button {
+  padding: 8px 16px;
+  margin-right: 16px;
+  border: 1px solid #dadce0;
+  background: white;
+  border-radius: 4px;
+  color: #5f6368;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Roboto", Arial, sans-serif;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border 0.2s;
+}
+
+.input-group input[type="file"]::file-selector-button:hover {
+  background: #f8f9fa;
+  border-color: #b0b0b0;
+}
+
+.input-group input[type="file"]::file-selector-button:active {
+  background: #f1f3f4;
+}
+
+.input-group:last-of-type label::after {
+  content: " *";
+  color: #d93025;
+}
+
+.submit-btn {
+  background: #673ab7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Roboto", "Google Sans", Arial, sans-serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+  margin-top: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  background: #5e35b1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  background: #512da8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(103, 58, 183, 0.4);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid #673ab7;
+  outline-offset: 2px;
+}
+
+.input-group:focus-within label {
+  color: #673ab7;
+}
+
+.input-group.error input,
+.input-group.error select {
+  border-color: #d93025;
+}
+
+.input-group.error label {
+  color: #d93025;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: 4px;
+}

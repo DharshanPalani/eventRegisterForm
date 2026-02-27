@@ -1,0 +1,50 @@
+.ticket-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  background: #f0ebf8;
+}
+
+.ticket-card {
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", Arial, sans-serif;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.ticket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-qr {
+  margin-bottom: 16px;
+}
+
+.ticket-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: #202124;
+  text-align: left;
+}
+
+.ticket-info strong {
+  color: #202124;
+}
+
+.ticket-info .attended {
+  color: #0b8043;
+  font-weight: 500;
+}
