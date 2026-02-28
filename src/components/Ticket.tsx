@@ -10,43 +10,66 @@ export default function Ticket({ registration }: Props) {
   return (
     <div className="ticket-wrapper">
       <div className="ticket-card">
-        <h3>🎟️ Event Ticket 🎟️</h3>
-
-        <QRCodeSVG
-          className="ticket-qr"
-          value={registration.id.toString()}
-          size={120}
-          bgColor="#ffffff"
-          fgColor="#673ab7"
-          level="H"
+        <img
+          className="ticket-bg"
+          src="/ticket-background.png"
+          alt="Ticket Background"
         />
 
-        <div className="ticket-info">
-          <div>
-            <strong>Name:</strong> {registration.name}
+        <img
+          className="ticket-banner"
+          src="/ticket-banner.png"
+          alt="Event Banner"
+        />
+
+        <div className="ticket-title">THINAI 2K26</div>
+
+        <div className="ticket-details">
+          <div className="detail-row">
+            <div className="detail-item fixed-width">
+              <div className="label">Name</div>
+              <div className="value">{registration.name}</div>
+            </div>
+            <div className="detail-item">
+              <div className="label">Register No.</div>
+              <div className="value">{registration.registration_no}</div>
+            </div>
           </div>
-          {registration.phone && (
-            <div>
-              <strong>Phone:</strong> {registration.phone}
+
+          <div className="detail-row">
+            <div className="detail-item fixed-width">
+              <div className="label">Department</div>
+              <div className="value">{registration.department}</div>
             </div>
-          )}
-          {registration.registration_no && (
-            <div>
-              <strong>Registration Number:</strong>
-              {registration.registration_no}
+            <div className="detail-item">
+              <div className="label">Ticket ID</div>
+              <div className="value">{registration.id}</div>
             </div>
-          )}
-          <div>
-            <strong>Ticket ID:</strong> {registration.id}
           </div>
-          {registration.department && (
-            <div>
-              <strong>Department:</strong> {registration.department}
+
+          <div className="detail-row">
+            <div className="detail-item fixed-width">
+              <div className="label">Date</div>
+              <div className="value">Mar 5 2026</div>
             </div>
-          )}
-          {registration.attended && (
-            <div className="attended">✅ Marked attended</div>
-          )}
+            <div className="detail-item">
+              <div className="label">Time</div>
+              <div className="value">10:00 AM</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="ticket-qr-section">
+          <QRCodeSVG
+            className="ticket-qr"
+            value={registration.id.toString()}
+            size={150}
+            bgColor="#ffffff"
+            fgColor="#000000"
+            level="H"
+          />
+          <div className="qr-number">{registration.id}</div>
+          <div className="qr-desc">Show this code to the Checker</div>
         </div>
       </div>
     </div>

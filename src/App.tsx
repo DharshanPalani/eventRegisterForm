@@ -18,67 +18,88 @@ function App() {
 
   useEffect(() => {
     const init = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      // alert("INIT START");
 
-      if (session?.user?.id) {
-        setUserId(session.user.id);
+      try {
+        // alert("Getting session...");
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        // alert("Session fetched");
 
-        const existing = await checkExisting(session.user.id);
-        if (existing) {
-          setRegistration(existing);
-          setChecked(true);
-          return;
+        if (session?.user?.id) {
+          // alert("User ID exists: " + session.user.id);
+          setUserId(session.user.id);
+
+          // alert("Checking existing registration...");
+          const existing = await checkExisting(session.user.id);
+          // alert("Existing check done");
+
+          if (existing) {
+            // alert("Registration exists");
+            setRegistration(existing);
+            setChecked(true);
+            return;
+          }
+        } else {
+          // alert("No session found");
         }
-      }
 
-      const pending = await getPending();
-      if (pending && !autoSubmitRef.current) {
-        autoSubmitRef.current = true;
-        setAutoSubmitting(true);
+        // alert("Getting pending...");
+        const pending = await getPending();
+        // alert("Pending fetched: " + JSON.stringify(pending));
 
-        try {
-          const result = await uploadAndRegister(
-            {
-              name: pending.name,
-              rollNo: pending.rollNo,
-              registrationNo: pending.registrationNo,
-              department: pending.department,
-              phone: pending.phone,
-              idCard: pending.imageFile || null,
-            },
-            session?.user?.id || "",
-            pending.imageFile,
-          );
-          setRegistration(result);
+        if (pending && !autoSubmitRef.current) {
+          // alert("Auto submit starting");
+          autoSubmitRef.current = true;
+          setAutoSubmitting(true);
 
-          if (pending.id) await clearPending(pending.id);
-        } catch (err) {
-          console.error("Auto-submit failed:", err);
-        } finally {
-          setAutoSubmitting(false);
+          try {
+            // alert("Calling uploadAndRegister...");
+            const result = await uploadAndRegister(
+              {
+                name: pending.name,
+                rollNo: pending.rollNo,
+                registrationNo: pending.registrationNo,
+                department: pending.department,
+                phone: pending.phone,
+                idCard: pending.imageFile || null,
+              },
+              session?.user?.id || "",
+              pending.imageFile,
+            );
+
+            // alert("Upload finished");
+            setRegistration(result);
+
+            if (pending.id) {
+              // alert("Clearing pending...");
+              await clearPending(pending.id);
+              // alert("Pending cleared");
+            }
+          } catch (err: any) {
+            // alert("Auto-submit failed: " + err?.message);
+            console.error(err);
+          } finally {
+            // alert("Auto-submit finally block");
+            setAutoSubmitting(false);
+            setChecked(true);
+          }
+        } else {
+          // alert("No pending OR already auto submitted");
           setChecked(true);
         }
-      } else {
+      } catch (err: any) {
+        // alert("INIT CRASHED: " + err?.message);
+        console.error(err);
         setChecked(true);
+        setAutoSubmitting(false);
       }
+
+      // alert("INIT END");
     };
 
     init();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === "SIGNED_IN" && session?.user?.id) {
-        setUserId(session.user.id);
-
-        const existing = await checkExisting(session.user.id);
-        if (existing) setRegistration(existing);
-      }
-    });
-
-    return () => subscription.unsubscribe();
   }, []);
 
   const handleSubmit = async (form: FormState) => {

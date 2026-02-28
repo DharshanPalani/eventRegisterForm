@@ -16,8 +16,6 @@ export default function RegistrationStatus({ registration }: Props) {
         <div className="registration-info">
           <div className="emoji">✅</div>
           <h2>Welcome, {registration.name}!</h2>
-          <p>Your Ticket ID:</p>
-          <div className="ticket-id">{registration.id}</div>
           {registration.attended && (
             <p className="attended">You have been marked as attended!</p>
           )}
