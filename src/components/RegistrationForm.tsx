@@ -84,17 +84,16 @@ export default function RegistrationForm({ onSubmit, loading }: Props) {
 
       <h1 className="form-title">Thinai 2K26</h1>
       <p
-        className="form-subtitle"
+        className="form-subtitle1"
         style={{
           fontWeight: 700,
-          color: "var(--primary)",
+          color: "var(--secondary)",
           marginTop: "-4px",
           marginBottom: "16px",
         }}
       >
-        Cultural Festival
+        Kalai Kondattam
       </p>
-
       <p
         className="form-subtitle"
         style={{
@@ -104,7 +103,7 @@ export default function RegistrationForm({ onSubmit, loading }: Props) {
           marginBottom: "16px",
         }}
       >
-        Kalai Kondattam
+        Cultural Festival
       </p>
 
       <div className="tribal-decoration">

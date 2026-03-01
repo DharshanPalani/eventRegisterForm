@@ -105,6 +105,13 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.form-subtitle1 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  text-align: center;
+  margin: 32px 24px 8px 24px;
+}
+
 .form-subtitle {
   text-align: center;
   margin: 0 40px 32px 40px;
