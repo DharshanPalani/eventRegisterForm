@@ -95,12 +95,23 @@ export default function RegistrationForm({ onSubmit, loading }: Props) {
         Cultural Festival
       </p>
 
+      <p
+        className="form-subtitle"
+        style={{
+          fontWeight: 700,
+          color: "var(--primary)",
+          marginTop: "-4px",
+          marginBottom: "16px",
+        }}
+      >
+        Kalai Kondattam
+      </p>
+
       <div className="tribal-decoration">
         <div></div>
         <span>◈</span>
         <div></div>
       </div>
-
 
       <p className="form-subtitle">
         Join the celebration of our heritage. Fill the form below. You'll sign
