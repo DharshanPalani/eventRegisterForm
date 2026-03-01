@@ -62,6 +62,7 @@ export const uploadAndRegister = async (
         name: formData.name,
         roll_no: formData.rollNo,
         registration_no: formData.registrationNo,
+        category: formData.category,
         department: formData.department,
         phone: formData.phone,
         id_card_url: idCardUrl,

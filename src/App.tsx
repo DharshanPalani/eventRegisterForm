@@ -3,6 +3,8 @@ import supabase from "./supabaseClient";
 import type { FormState } from "./types";
 import { checkExisting, uploadAndRegister } from "./services/registration";
 import { getPending, clearPending, savePending } from "./lib/indexedDB";
+import "./styles/theme.css";
+import "./styles/RegistrationForm.css";
 
 import RegistrationStatus from "./components/RegistrationStatus";
 import RegistrationForm from "./components/RegistrationForm";
@@ -139,14 +141,40 @@ function App() {
   // };
 
   if (!checked || autoSubmitting) {
-    return <p style={{ textAlign: "center", marginTop: 50 }}>Loading...</p>;
+    return (
+      <div className="form-page">
+        <div className="tribal-overlay"></div>
+        <div
+          className="form-container"
+          style={{ textAlign: "center", padding: "100px 40px" }}
+        >
+          <div className="registration-info">
+            <div
+              className="emoji"
+              style={{ animation: "bounce 1.5s infinite" }}
+            >
+              ◈
+            </div>
+            <h2 className="form-title">Honoring our Roots</h2>
+            <p className="form-subtitle">
+              Preparing your Thinai 2K26 experience...
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  if (registration) {
-    return <RegistrationStatus registration={registration} />;
-  }
-
-  return <RegistrationForm onSubmit={handleSubmit} loading={loading} />;
+  return (
+    <div className="form-page">
+      <div className="tribal-overlay"></div>
+      {registration ? (
+        <RegistrationStatus registration={registration} />
+      ) : (
+        <RegistrationForm onSubmit={handleSubmit} loading={loading} />
+      )}
+    </div>
+  );
 }
 
 export default App;

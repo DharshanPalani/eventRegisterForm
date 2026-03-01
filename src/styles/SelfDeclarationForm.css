@@ -1,50 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&display=swap");
+@import url("./theme.css");
+
 .declaration-section {
-  margin-top: 32px;
-  padding: 24px;
-  background: #faf7ff;
-  border: 1px solid #e6e1f5;
-  border-radius: 6px;
+  background: rgba(20, 90, 50, 0.03); /* Faint Forest Green */
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 90, 50, 0.1);
+  margin-bottom: 30px;
 }
 
 .declaration-section h3 {
+  font-family: var(--font-heading);
   font-size: 18px;
-  font-weight: 500;
-  color: #202124;
-  margin-bottom: 16px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .checkbox-group {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .checkbox-group label {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
-  color: #3c4043;
   line-height: 1.5;
+  color: var(--text-secondary);
   cursor: pointer;
-}
-
-.checkbox-group input[type="checkbox"] {
-  margin-top: 3px;
-  width: 16px;
-  height: 16px;
-  accent-color: #673ab7;
-  cursor: pointer;
+  transition: all 0.2s;
+  padding: 8px;
+  border-radius: 6px;
 }
 
 .checkbox-group label:hover {
-  color: #202124;
+  background: rgba(211, 84, 0, 0.05);
+  color: var(--primary);
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .final-agreement {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e0e0e0;
-  font-weight: 500;
-  color: #202124;
+  margin-top: 10px;
+  padding: 16px !important;
+  background: rgba(211, 84, 0, 0.08);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 600 !important;
+  color: var(--primary) !important;
 }
