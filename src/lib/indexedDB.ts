@@ -7,6 +7,7 @@ export interface PendingRegistration {
   name: string;
   rollNo: string;
   registrationNo: string;
+  category: string;
   department: string;
   phone: string;
   imageFile?: File;
