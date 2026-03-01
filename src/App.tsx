@@ -163,6 +163,9 @@ function App() {
             </p>
           </div>
         </div>
+        <footer className="app-footer">
+          Designed & Developed by <img src="/watermark.png" alt="Watermark" />
+        </footer>
       </div>
     );
   }
@@ -175,6 +178,9 @@ function App() {
       ) : (
         <RegistrationForm onSubmit={handleSubmit} loading={loading} />
       )}
+      <footer className="app-footer">
+        Designed & Developed by <img src="/watermark.png" alt="Watermark" />
+      </footer>
     </div>
   );
 }

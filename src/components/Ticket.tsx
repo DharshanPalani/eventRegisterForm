@@ -70,8 +70,8 @@ export default function Ticket({ registration }: Props) {
               <div className="value">{registration.department}</div>
             </div>
             <div className="detail-item">
-              <div className="label">Ticket ID</div>
-              <div className="value">{registration.id}</div>
+              <div className="label">Category</div>
+              <div className="value">{registration.category || "N/A"}</div>
             </div>
           </div>
 
@@ -82,7 +82,7 @@ export default function Ticket({ registration }: Props) {
             </div>
             <div className="detail-item">
               <div className="label">Time</div>
-              <div className="value">10:00 AM</div>
+              <div className="value">09:00 AM</div>
             </div>
           </div>
         </div>
