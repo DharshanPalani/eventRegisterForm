@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import type { Registration } from "../types";
 import { QRCodeSVG } from "qrcode.react";
+import { toPng } from "html-to-image";
 import "../styles/Ticket.css";
 
 type Props = {
@@ -7,9 +9,34 @@ type Props = {
 };
 
 export default function Ticket({ registration }: Props) {
+  const ticketRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = async () => {
+    if (ticketRef.current === null) {
+      return;
+    }
+
+    try {
+      const dataUrl = await toPng(ticketRef.current, { cacheBust: true });
+      const link = document.createElement("a");
+      link.download = `Thinai2K26-Ticket-${registration.registration_no}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Failed to download ticket", err);
+      alert(
+        "Failed to download ticket. Please try again or take a screenshot.",
+      );
+    }
+  };
+
   return (
-    <div className="ticket-wrapper">
-      <div className="ticket-card">
+    <div className="ticket-wrapper flex flex-col items-center">
+      <button className="download-btn mb-6" onClick={handleDownload}>
+        Download Ticket (PNG)
+      </button>
+
+      <div className="ticket-card flex flex-col items-center" ref={ticketRef}>
         <img
           className="ticket-bg"
           src="/ticket-background.png"
@@ -23,6 +50,7 @@ export default function Ticket({ registration }: Props) {
         />
 
         <div className="ticket-title">THINAI 2K26</div>
+        <div className="ticket-subtitle">Cultural Festival</div>
 
         <div className="ticket-details">
           <div className="detail-row">

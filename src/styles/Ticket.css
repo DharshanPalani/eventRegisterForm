@@ -16,7 +16,7 @@
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(93, 64, 55, 0.2);
+  box-shadow: none; /* Shadow removed */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 1; /* Increased opacity to favor white text readability if bg is dark */
 }
 
 .ticket-banner {
@@ -48,22 +48,52 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   margin-bottom: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* Shadow removed */
 }
 
 .ticket-title {
   position: relative;
   z-index: 2;
   width: 100%;
-  color: var(--secondary);
+  color: white; /* Changed to white */
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
-  border-bottom: 1.5px dashed var(--accent);
-  padding-bottom: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   letter-spacing: 1px;
+}
+
+.ticket-subtitle {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.mb-6 {
+  margin-bottom: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .ticket-details {
@@ -91,7 +121,7 @@
 }
 
 .label {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.8); /* Re-styled to white-ish */
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 11px;
@@ -100,7 +130,7 @@
 }
 
 .value {
-  color: var(--text-primary);
+  color: white; /* Changed to white */
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 14px;
@@ -124,11 +154,11 @@
   background: white;
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: none; /* Shadow removed */
 }
 
 .qr-number {
-  color: var(--primary);
+  color: white; /* Changed to white */
   font-family: monospace;
   font-weight: 700;
   font-size: 13px;
@@ -136,9 +166,31 @@
 }
 
 .qr-desc {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.8); /* Changed to white-ish */
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 11px;
   text-align: center;
+}
+
+/* Download button styles */
+.download-btn {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(211, 84, 0, 0.3);
+}
+
+.download-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 90, 50, 0.4);
 }
