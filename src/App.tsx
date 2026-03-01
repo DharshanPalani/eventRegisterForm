@@ -8,6 +8,7 @@ import "./styles/RegistrationForm.css";
 
 import RegistrationStatus from "./components/RegistrationStatus";
 import RegistrationForm from "./components/RegistrationForm";
+import FeedbackForm from "./components/FeedbackForm";
 
 function App() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -15,6 +16,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [autoSubmitting, setAutoSubmitting] = useState(false);
   const [checked, setChecked] = useState(false);
+
+  const isFeedbackRoute = window.location.pathname === "/feedback";
 
   const autoSubmitRef = useRef(false);
 
@@ -173,7 +176,9 @@ function App() {
   return (
     <div className="form-page">
       <div className="tribal-overlay"></div>
-      {registration ? (
+      {isFeedbackRoute ? (
+        <FeedbackForm />
+      ) : registration ? (
         <RegistrationStatus registration={registration} />
       ) : (
         <RegistrationForm onSubmit={handleSubmit} loading={loading} />
