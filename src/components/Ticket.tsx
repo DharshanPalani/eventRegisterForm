@@ -78,7 +78,7 @@ export default function Ticket({ registration }: Props) {
           <div className="detail-row">
             <div className="detail-item fixed-width">
               <div className="label">Date</div>
-              <div className="value">Mar 5 2026</div>
+              <div className="value">March 5 2026</div>
             </div>
             <div className="detail-item">
               <div className="label">Time</div>
