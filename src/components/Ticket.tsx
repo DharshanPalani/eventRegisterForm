@@ -98,6 +98,9 @@ export default function Ticket({ registration }: Props) {
           />
           <div className="qr-number">{registration.id}</div>
           <div className="qr-desc">Show this code to the Checker</div>
+          <div className="important-notice">
+            ENTRY TIME 8.00 AM TO 9.00 AM ONLY
+          </div>
         </div>
       </div>
     </div>

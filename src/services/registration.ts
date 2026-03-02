@@ -1,5 +1,6 @@
 import supabase from "../supabaseClient";
 import type { FormState } from "../types";
+import imageCompression from "browser-image-compression";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
@@ -26,22 +27,32 @@ export const uploadAndRegister = async (
   let idCardUrl = "";
 
   if (imageFile || formData.idCard) {
-    const file = imageFile || formData.idCard;
+    const originalFile = imageFile || formData.idCard;
 
-    if (!file) {
+    if (!originalFile) {
       throw new Error("No ID card file");
     }
 
-    if (file.size > MAX_FILE_SIZE) {
-      throw new Error("File exceeds 10MB limit");
+    // 🔥 Compress here
+    const compressedFile = await imageCompression(originalFile, {
+      maxSizeMB: 1, // compress to max 1MB
+      maxWidthOrHeight: 1200, // resize large images
+      useWebWorker: true,
+    });
+
+    if (compressedFile.size > MAX_FILE_SIZE) {
+      throw new Error("File still exceeds 10MB limit");
     }
 
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+    const fileName = `${Date.now()}-${Math.random()
+      .toString(36)
+      .substring(7)}.jpg`;
 
     const { error: uploadError } = await supabase.storage
       .from("id-cards")
-      .upload(fileName, file);
+      .upload(fileName, compressedFile, {
+        contentType: "image/jpeg",
+      });
 
     if (uploadError) {
       throw new Error("Upload failed: " + uploadError.message);

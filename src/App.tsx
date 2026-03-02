@@ -179,7 +179,13 @@ function App() {
         <RegistrationForm onSubmit={handleSubmit} loading={loading} />
       )}
       <footer className="app-footer">
-        Designed & Developed by <img src="/watermark.png" alt="Watermark" />
+        Designed & Developed by <img src="/watermark.png" alt="Watermark" /> and
+        <img
+          style={{
+            height: "50px",
+          }}
+          src="/vat_logo.png"
+        />
       </footer>
     </div>
   );

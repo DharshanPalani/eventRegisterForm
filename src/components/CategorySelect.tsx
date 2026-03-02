@@ -8,6 +8,7 @@ const CATEGORIES = [
   "NCC",
   "Women's Development Cell",
   "Student Council",
+  "GNCIIES - Stall Members",
 ];
 
 type Props = {
